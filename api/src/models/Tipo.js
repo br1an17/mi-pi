@@ -5,15 +5,16 @@ module.exports = (sequelize) =>{
         "Tipo",
         {
             id:{
-                type:DataTypes.UUID,
+                type:DataTypes.INTEGER,
                 allowNull:false,
                 primaryKey:true,
-                defaultValue:DataTypes.UUIDV4
+                autoIncrement:true
+                
             },
             name:{
-                type: DataTypes.STRING,
+                type: DataTypes.ARRAY(DataTypes.STRING),
                 allowNull: false,
-                unique: true,
+            
             }
         },
         {timestamps:false}
