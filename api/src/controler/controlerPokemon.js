@@ -1,15 +1,13 @@
 const axios = require("axios");
-const { Pokemon,Tipo } = require("../db");
+const { Pokemon } = require("../db");
 
 const pokemonDB = async () => {
   try {
     // Desestructuramos la data
-    const pokeData = await axios
-      .get("https://pokeapi.co/api/v2/pokemon?limit=150")
-      .then((res) => res.data)
-      .catch((error) => console.log(error));
+    const {data} = await axios
+      .get("https://pokeapi.co/api/v2/pokemon?limit=40")
     // Desestructuramos los results
-    const { results } = pokeData;
+    const { results } = data;
 
     // Iteramos los results y resolvemos las url de cada pokemon
     const pokemons = await results.map(async (pokemon) => {
@@ -25,7 +23,7 @@ const pokemonDB = async () => {
         weight: data.weight,
         image: data.sprites.other.home["front_default"],
         types: data.types.map((t) => t.type.name),
-      };
+       };
     });
 
     // Resolvemos las promesas de los pokemon
@@ -41,23 +39,7 @@ const pokemonDB = async () => {
       }
       return results;
     });
-    Promise.all(pokemons).then(async (pokemon) => {
-      const typoDB = pokemon.map(({ types }) => {
-        return {
-          name: types,
-        };
-      })
-      const typesDB = await Tipo.findAll();
-      // Si NO tiene data creamos la BD
-      if (!typesDB.length) {
-        // Creamos la base de datos por cada pokemon que resulve la promesa
-        const newTypesDB = await Tipo.bulkCreate(typoDB);
-        //Retornamos la base de datos
-        return newTypesDB;
-      }
-      return typoDB;
-      
-    });
+ 
   } catch (error) {
     console.log(error);
   }

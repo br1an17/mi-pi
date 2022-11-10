@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+     
     },
     hp:{
       type:DataTypes.INTEGER,
@@ -37,9 +37,14 @@ module.exports = (sequelize) => {
     weight:{
       type:DataTypes.FLOAT
     },
-  image:{
-  type:DataTypes.STRING
-  },
+   image:{
+   type:DataTypes.STRING,
+   defaultValue: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
+   },
+   cretedInDb:{
+    type:DataTypes.BOOLEAN,
+    defaultValue:true,
+   }
   },
   {timestamps:false})
   ;

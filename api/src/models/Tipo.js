@@ -12,7 +12,7 @@ module.exports = (sequelize) =>{
                 
             },
             name:{
-                type: DataTypes.ARRAY(DataTypes.STRING),
+                type: DataTypes.STRING,
                 allowNull: false,
             
             }
