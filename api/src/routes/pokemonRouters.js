@@ -1,48 +1,64 @@
 const { Router } = require("express");
 const router = Router();
-const { Op } = require("sequelize");
-const { Pokemon, Tipo } = require("../db");
+const {
+  FunctionGet,
+  FunctionGetId,
+  FunctionPost,
+  FunctionDelete,
+} = require("../controler/controlerRouters");
+const { Pokemon} = require("../db");
+
+//________________ RUTA GET Y QUERY __________________//
 
 router.get("/", async (req, res) => {
+  const { name } = req.query;
   try {
-    const { name } = req.query;
-    let getData = await Pokemon.findAll();
-    if (name) {
-      getData = await Pokemon.findAll({
-        where: {
-          name: { [Op.iLike]: `${name}` },
-        },
-      });
-    }
-    res.status(200).json(getData);
+    const getData = await FunctionGet(name);
+    res.status(200).send(getData);
   } catch (error) {
     res.status(500).send(error.message);
   }
 });
 
+//________________ RUTA GET ID_______________________//
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
-
   try {
-    const buscarID = await Pokemon.findOne({
-      where: { id },
-    });
-
-    if (!buscarID) {
-      return res.status(404).send("No existe el pokemon con el id ingresado");
-    }
-
+    const buscarID = await FunctionGetId(id);
     res.status(200).send(buscarID);
   } catch (error) {
     res.status(500).send(error.masagge);
   }
 });
 
-router.post("/", async (req, res) => {
+//________________ RUTA POST_______________________//
 
-  
+router.post("/", async (req, res) => {
+  try {
+    await FunctionPost(req.body);
+
+    res.status(200).send("Pokemon creado con exito");
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
+//___________________RUTA DELETE_________________//
+
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    await FunctionDelete(id);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+//___________________RUTA PUT_________________//
+router.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
     const {
-      id,
       name,
       hp,
       attack,
@@ -54,70 +70,9 @@ router.post("/", async (req, res) => {
       types,
       createdInDb,
     } = req.body;
-try {
-      const createPokemon = await Pokemon.create({
-        id,
-        name,
-        hp,
-        attack,
-        defense,
-        speed,
-        height, 
-        weight,
-        image,
-        createdInDb,
-      })
-      if(types){
 
-        types.map(async type=>{
-          const typeFount = await Tipo.findAll({
-            where:{
-              name:type
-            }
-          })
-          createPokemon.addTipo(typeFount)
-        })
-      }
-     
-    
-
-    res.status(200).send("Pokemon creado con exito");
-  
-  } catch (error) {
-    res.status(404).send(error.message);
-  
-  }
-});
-
-router.delete("/:id", async (req,res)=>{
-  const {id} = req.params;
-  try {
-      const pokemonDelete = await Pokemon.findByPk(id);
-      console.log(pokemonDelete)
-  if(!pokemonDelete){
-    res.status(400).send("No existe el pokemon a eliminar")
-  }else{
-    pokemonDelete.destroy();
-    return res.status(200).send("Pokemon eliminado correctamente")
-  }
-  } catch (error) {
-    res.status(400).send(error)
-  }
-  });
-
-   router.get("/types",async(req,res)=>{
-
-
-   })
-
-
-
-  router.put("/:id", async (req,res)=>{
-    try{
-
-      const {id} =req.params
-
-      const {
+   await Pokemon.update(
+      {
         name,
         hp,
         attack,
@@ -127,32 +82,18 @@ router.delete("/:id", async (req,res)=>{
         weight,
         image,
         types,
-        createdInDb,} =req.body;
-
-        const pokemonUpdate = await Pokemon.update({
-          name,
-          hp,
-          attack,
-          defense,
-          speed,
-          height,
-          weight,
-          image,
-          types,
-          createdInDb,
-        },{
-          where:{
-            id
-          }
-
-        })
-res.status(200).send("Pokemon modificado")
-      
-      
-      }catch(error){
-        res.status(404).send(error.message)
-    }
-  })
-
+        createdInDb,
+      },
+      {
+        where: {
+          id,
+        },
+      }
+    );
+    res.status(200).send("Pokemon modificado");
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
 
 module.exports = router;
