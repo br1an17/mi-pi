@@ -1,5 +1,5 @@
 const axios = require("axios");
-const {  Tipo } = require("../db");
+const {  Types } = require("../db");
 
 const tiposDB = async () => {
   try {
@@ -16,7 +16,7 @@ const tiposDB = async () => {
       };
     });
     Promise.all(types).then(async res=>{
-       const newDB = await Tipo.bulkCreate(res)
+       const newDB = await Types.bulkCreate(res)
     return newDB  
     })
    

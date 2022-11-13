@@ -18,7 +18,7 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const pokemonDB = require('./src/controler/controlerPokemon.js');
+//const pokemonDB = require('./src/controler/controlerPokemon.js');
 const tiposDB = require('./src/controler/controlerTypo.js');
 const { conn } = require('./src/db.js');
 
@@ -26,7 +26,7 @@ const { conn } = require('./src/db.js');
 conn.sync({ force: true }).then(() => {
   server.listen(3001, async () => {
     console.log('%s listening at 3001');
-     await pokemonDB()
+    //  await pokemonDB()
      await tiposDB()
      console.log("base de datos creada")// eslint-disable-line no-console
   });

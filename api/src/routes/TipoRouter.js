@@ -1,11 +1,11 @@
 const { Router } = require("express");
 const router = Router();
-const { Tipo } = require ("../db.js");
+const { Types} = require ("../db.js");
 
 router.get("/", async (req, res) => {
   try {
-        const losTipos =await Tipo.findAll();
-        res.status(200).send(losTipos);
+        const type =await Types.findAll();
+        res.status(200).send(type);
     }
   catch (error) {
    res.status(400).json({error:error.message})

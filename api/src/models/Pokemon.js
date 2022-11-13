@@ -8,7 +8,6 @@ module.exports = (sequelize) => {
       type:DataTypes.INTEGER,
       allowNull:false,
       primaryKey:true,
-     autoIncremen:true,
     },
     name: {
       type: DataTypes.STRING,
@@ -46,6 +45,7 @@ module.exports = (sequelize) => {
     defaultValue:true,
    }
   },
-  {timestamps:false})
+  {timestamps:false}
+  )
   ;
 };

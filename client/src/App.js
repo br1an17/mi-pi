@@ -1,9 +1,33 @@
-import './App.css';
-
+import "./App.css";
+import "./App.css";
+import Home from "./component/Home/Home";
+import Form from "./component/Form/Form";
+import Navbar from "./component/Navbar/Navbar";
+import Pokemones from "./component/Pokemon/Pokemones";
+import Principal from "./component/Principal/Principal";
+import { Route } from "react-router-dom";
+import LandingPage from "./component/Landing/LandingPage";
 function App() {
   return (
     <div className="App">
-      <h1>Henry Pokemon</h1>
+
+      <Route exact path="/">
+      <LandingPage />
+      </Route>
+
+     <Route path = "/principal">
+      <Principal/>
+      </Route>
+
+       <Route path = "/detalle">  
+        <Pokemones />
+      </Route>
+
+      <Route path="/create">
+        <Form />
+      </Route>
+
+
     </div>
   );
 }

@@ -8,11 +8,11 @@ const pokemonDB = async () => {
       .get("https://pokeapi.co/api/v2/pokemon?limit=40")
     // Desestructuramos los results
     const { results } = data;
-
+  const pokemonData =[]
     // Iteramos los results y resolvemos las url de cada pokemon
-    const pokemons = await results.map(async (pokemon) => {
+    const pokemons = await Promise.all(results.map(async (pokemon) => {
       const { data } = await axios.get(pokemon.url);
-      return {
+      pokemonData.push ({
         id: data.id,
         name: data.name,
         hp: data.stats[0]["base_stat"],
@@ -23,26 +23,66 @@ const pokemonDB = async () => {
         weight: data.weight,
         image: data.sprites.other.home["front_default"],
         types: data.types.map((t) => t.type.name),
-       };
-    });
+       })
+    }));
+  
 
     // Resolvemos las promesas de los pokemon
-    Promise.all(pokemons).then(async (pokemon) => {
-      // Revisamos si la base de datos Pokemon tiene data
-      const pokemonsDb = await Pokemon.findAll();
-      // Si NO tiene data creamos la BD
-      if (!pokemonsDb.length) {
-        // Creamos la base de datos por cada pokemon que resulve la promesa
-        const newDB = await Pokemon.bulkCreate(pokemon);
-        //Retornamos la base de datos
-        return newDB;
-      }
-      return results;
-    });
+  return pokemonData.sort((a,b)=>a.id-b.id);
+      // // Revisamos si la base de datos Pokemon tiene data
+      // const pokemonsDb = await Pokemon.findAll();
+      // // Si NO tiene data creamos la BD
+      // if (!pokemonsDb.length) {
+      //   // Creamos la base de datos por cada pokemon que resulve la promesa
+      //   const newDB = await Pokemon.bulkCreate(pokemon);
+      //   //Retornamos la base de datos
+      //   return newDB;
+      // }
+      // aca va otro return
+   
  
   } catch (error) {
-    console.log(error);
+    console.log("Se rompio la api de nuevo");
   }
 };
 
-module.exports = pokemonDB;
+// const infoDB = async () =>{
+//  const pokemonDB = await Pokemon.findAll({
+//   include:{
+//     model: Type,
+//     atribute:["name"],
+//     through:{
+//       attributes:[],
+//     },
+//   },
+//  });
+// const pokemonMap = pokemonDB?.map((pokemon)=>{
+//   const { types } = pokemon;
+//   const pokemonData ={ 
+//   ...pokemon.dataValues,
+//   types:types.map((e)=> t.name)}
+//   return pokemonData
+// })
+// return pokemonMap;
+// }
+
+// const getInfoPokemon = async () =>{
+//   try {
+//     const infoApi = await pokemonDB();
+//     const infodb = await infoDB();
+//     const infoTotal = infodb.concat(infoApi);
+//     return infoTotal
+//   } catch (error) {
+//     console.log(error)
+//   }
+
+
+//  }
+
+
+module.exports = {
+  pokemonDB,
+
+
+}
+
