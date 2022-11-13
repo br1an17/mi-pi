@@ -37,7 +37,7 @@ module.exports = (sequelize) => {
       type:DataTypes.FLOAT
     },
    image:{
-   type:DataTypes.STRING,
+   type:DataTypes.TEXT,
    defaultValue: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
    },
    cretedInDb:{

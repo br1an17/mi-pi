@@ -1,12 +1,12 @@
 import React from "react";
 
-const Pokemones= () =>{
+const Pokemones= ({pokemon}) =>{
     return (
-    <>
-    <h1> Cree las cartas </h1>
-    <p>  Miren Putos   </p>
+    <div>
+    <h1> {pokemon.name} </h1>
+    <p>  cree las cartas  </p>
     
     
-    </>)
+    </div>)
 }
 export default  Pokemones

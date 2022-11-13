@@ -2,6 +2,8 @@ const { Op } = require("sequelize");
 const { Pokemon, Types } = require("../db");
 const { pokemonDB } = require("./controlerPokemon");
 const pokemons = require("./dataBase"); // mi base de datos
+
+
 const FunctionGet = async (name) => {
   //const pokemonTotal = await pokemons; // base de datos propia
   let pokemonTotal = await pokemonDB();

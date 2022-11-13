@@ -1,0 +1,33 @@
+.fondo {
+    width: 100%;
+    height: 100vh;
+
+
+}
+
+
+.boton {
+    position: absolute;
+
+   
+    top: 20%;
+    left: 46%;
+   
+    color:#003049;
+    margin-bottom: 35px;
+    margin-top: 20px;
+    cursor: pointer;
+  border-radius: 50%;
+
+
+    background-image: url("../../img/pokeballfinal.png");
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+}
+
+.button:hover{
+
+    color: white;
+    box-shadow: 0 10px 25px rgba(34, 161, 229, 0.6);
+}

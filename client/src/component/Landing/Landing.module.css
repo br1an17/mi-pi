@@ -1,27 +1,108 @@
-.fondo {
-    width: 100%;
-    height: 100vh;
-
-
+.baground {
+  background-size: cover;
+  background-position: cover;
+  height: 100%;
+  background-repeat: no-repeat;
+  display: flex; 
+  justify-content: space-between;
+  
+   height: 100%;
+ width: 100%;
+ background-attachment: fixed
+   /* background: no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
 }
+
+
+.contDer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pokemon {
+  position: absolute;
+  max-width: 600px;
+  top: 20%;
+  left: 52%;
+  background-color: transparent;
+
+  width: 100px;
+  height: 100px;
+  width: 80%;
+  filter: drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.4));
+}
+
+.fondo {
+  width: 100%;
+  height: 100%;
+}
+/* .titulo {
+  color: aqua;
+  background-color: transparent;
+  position: absolute;
+  top: 64%;
+  left: 71.4%;
+}
+.titulo:hover {
+  color: white;
+  background-color: transparent;
+  box-shadow: 0 10px 25px rgba(34, 161, 229, 0);
+} */
 
 .button {
-    position: absolute;
-    top: 50%;
-    left: 70%;
-    background:#eae2b7;
-    color:#003049;
-    font-size: large;
-    padding: 10px 40px;
-    border-radius: 5px;
-    font-weight: bold;
-    margin-bottom: 35px;
-    margin-top: 20px;
-    cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 70%;
+
+  color: #003049;
+  margin-bottom: 35px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+
+  background-image: url("../../img/pokeballfinal.png");
+  width: 100px;
+  height: 100px;
+  background-size: cover;
 }
 
-.button:hover{
+.button:hover {
+  color: white;
+  box-shadow: 0 10px 25px rgba(34, 161, 229, 0.6);
+}
 
-    color: white;
-    box-shadow: 0 10px 25px rgba(34, 161, 229, 0.6);
+.linkedin {
+  position: absolute;
+  top: 10%;
+  left: 2%;
+  max-height: 100px;
+  background-color: transparent;
+  border-radius: 100%;
+}
+
+.linkedin:hover {
+  color: white;
+  box-shadow: 0 15px 25px rgba(34, 161, 229, 0.6);
+}
+
+.github {
+  position: absolute;
+  top: 80%;
+  left: 2%;
+  max-height: 100px;
+  background-color: transparent;
+  border-radius: 100%;
+ 
+}
+
+.github:hover {
+  color: white;
+  box-shadow: 0 15px 25px rgba(34, 161, 229, 0.6);
+}
+
+.links {
+  display: flex;
 }
