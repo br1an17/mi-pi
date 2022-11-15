@@ -1,0 +1,75 @@
+
+
+
+
+
+.input {
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
+    height: 35px;
+    width: 300px;
+    border-radius: 20px;
+    border: #ebe8e8;
+    padding-left: 20px;
+    font-family: "Rubik", sans-serif;
+  }
+  
+  .input:focus {
+    outline: none;
+  }
+  
+  .search {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .searchButton {
+    background: #ff8c87;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 3px;
+    height: 35px;
+    width: 35px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .searchButton:hover {
+    background-color: #ffcd02;
+  }
+  
+  .buscar {
+    height: 25px;
+  }
+  
+
+
+.botonCreate {
+    position: relative;
+    top: 1%;
+    left: 15%;
+   
+    color:#003049;
+    margin-bottom: 35px;
+    margin-top: 20px;
+    cursor: pointer;
+  border-radius: 50%;
+
+
+    background-image: url("../../img/pokeballfinal.png");
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+}
+
+.buttonCreate:hover{
+
+    color: white;
+    box-shadow: 0 10px 25px rgba(34, 161, 229, 0.6);
+}

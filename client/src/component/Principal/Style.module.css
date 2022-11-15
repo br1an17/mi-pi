@@ -1,0 +1,66 @@
+.baground{
+  background-image: url("../../img/pokBack6.jpg" );
+  background-size: cover;
+  background-position: cover;
+
+  /* display: flex;  */
+  justify-content: space-between;
+  
+   height: 100%;
+ width: 100%;
+ background-attachment: fixed
+}
+
+.fondo {
+
+
+    width: 50%;
+    height: 50vh;
+
+}
+
+
+.boton {
+    position: absolute;
+
+   
+    top: 60%;
+    left: 50%;
+   
+    color:#003049;
+    margin-bottom: 35px;
+    margin-top: 20px;
+    cursor: pointer;
+  border-radius: 50%;
+
+
+    background-image: url("../../img/pokeballfinal.png");
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+}
+
+.button:hover{
+
+    color: white;
+    box-shadow: 0 10px 25px rgba(34, 161, 229, 0.6);
+}
+.botonCreate {
+  position: relative;
+
+ 
+  margin-top: 2px;
+  left: 30%;
+ 
+  color:#003049;
+  margin-bottom: 35px;
+  margin-top: 20px;
+  cursor: pointer;
+border-radius: 50%;
+
+
+  background-image: url("../../img/pokeballfinal.png");
+width: 80px;
+height: 80px;
+background-size: cover;
+}

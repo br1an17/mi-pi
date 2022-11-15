@@ -1,7 +1,7 @@
 import React from "react";
-import Princ from "./Princ.module.css";
+import Style from "./Style.module.css";
 import { Link } from "react-router-dom";
-import pokePrincipales from "../../img/Fondo.jpg";
+import pikachu from "../../img/Pokemon-gifs-13.gif";
 import { useDispatch ,useSelector} from "react-redux";
 import {getPokemones} from "../../redux/actions";
 import Pokemones from "../Pokemon/Pokemones"
@@ -18,21 +18,29 @@ const Principal = () => {
       },[])
       
       if(pokemon.length){
-        return(
+        return( 
+        
+      
+         <div class={Style.baground}>
+
+          
           <>
           {pokemon.map(pokemon=> <Pokemones key={pokemon.id} pokemon={pokemon}/>)}
           </>
-        
+       
+         </div>
+
+  
           )
       }else{
 
   return (
    
     <div>
-      <img className={Princ.fondo} src={pokePrincipales} alt="imagen rota" />
+      <img className={Style.fondo} src={pikachu} alt="imagen rota" />
       <div>
         <Link to="/">
-          <div className={Princ.boton}> 
+          <div className={Style.boton}> 
           </div>
         </Link>
       </div>

@@ -22,7 +22,7 @@ const pokemonDB = async () => {
         height: data.height,
         weight: data.weight,
         image: data.sprites.other.home["front_default"],
-        types: data.types.map((t) => t.type.name),
+        types: toString(data.types.map((t) => t.type.name)),
        })
     }));
   
@@ -79,7 +79,13 @@ const pokemonDB = async () => {
 
 //  }
 
-
+const toString = (array) => {
+  let st = "";
+  array.map((e) => {
+    st.length === 0 ? (st += e) : (st += ", " + e);
+  });
+  return st;
+}; //funcion que agrega comas entre elementos
 module.exports = {
   pokemonDB,
 
