@@ -1,6 +1,6 @@
 import "./App.css";
 import "./App.css";
-import Home from "./component/Home/Home";
+ //import SerchBar from "./component/SerchBar/SerchBar";
 import Form from "./component/Form/Form";
 import Navbar from "./component/Navbar/Navbar";
 import Pokemones from "./component/Pokemon/Pokemones";

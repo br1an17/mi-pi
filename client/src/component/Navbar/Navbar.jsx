@@ -1,18 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Style from "./Style.module.css"
+import Style from "./Navbar.module.css"
 
 
 const Navbar= () =>{
     return (
-    <div className={Style.search}>
-  
-  <input type="text" className ={Style.input}  /> 
-   <button classname ={Style.searchButton}> Buscar </button>
-   <Link to="/create" >
-          <div className={Style.botonCreate}> </div>
-          </Link>
+        <div className={Style.nav}>
+           
+        <nav className={Style.search}>
     
-    </div>)
+      <Link to='/'className={Style.botonPage} >
+      {/* <div className={Style.texto}>Pagina Principal </div> */}
+      </Link>
+      <Link to='/create' className={Style.botonCreate}>
+       {/* <div className={Style.Texto}>Crear pokemon</div> */}
+      </Link>
+     
+    </nav>
+    </div>
+   )
 }
 export default  Navbar;

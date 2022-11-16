@@ -1,9 +1,10 @@
-import { GET_POKEMON , ERROR } from "./actions";
+import { GET_POKEMON , ERROR, POST_POKEMON, GETNAME_POKEMON } from "../actions/actions";
 
 const initialState ={
     pokemon: [],
-    error:{}
-
+    error:{},
+    post:{},
+     pokecard:[]
 }
 
  export default function rootReducer(state=initialState, action){
@@ -13,14 +14,27 @@ const initialState ={
         case GET_POKEMON:
             return{
                 ...state,
-                pokemon:action.payload
+                pokemon:[...action.payload]
             }
+            case POST_POKEMON:
+                return{
+                    ...state,
+                    post:action.payload
+
+                }
+            case GETNAME_POKEMON:
+                return{
+                    ...state,
+                   pokemon:[...action.payload],
+                }
             case ERROR:
                 return{
                 ...state,
                 error:action.payload
 
                 }
+            
+
 
         default:
             return { ...state}

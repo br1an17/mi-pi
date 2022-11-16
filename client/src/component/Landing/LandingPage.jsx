@@ -1,31 +1,32 @@
 import React from "react";
-import Landing from "../Landing/Landing.module.css";
+import Style from "../Landing/Landing.module.css";
 import { Link } from "react-router-dom";
-import charmander from "../../img/charmander.gif";
 import linkedin from "../../img/likend.png"
 import github from "../../img/gith.png"
 import pokemon from "../../img/landing-pokemon-logo.png"
+import letsGo from "../../img/LETS GO.png"
+
 const landingPage = () => {
   return (
-     <div >
+     <div className={Style.baground} >
      
-      <img className={Landing.baground} src={charmander} alt="imagen desaperida" />
-      <div className={Landing.contDer}>
-      <img src={pokemon}  alt= "pokemon" className={Landing.pokemon}/>
+      {/* <img className={Landing.baground} src={charmander} alt="imagen desaperida" /> */}
+      <div className={Style.contDer}>
+      <img src={pokemon}  alt= "pokemon" className={Style.pokemon}/>
        
-       <div className={Landing.pokemon}/>
+       <div className={Style.pokemon}/>
       <div >
         <Link to="/principal">
-          <div className={Landing.button}></div>
+          <div className={Style.button}></div>
         </Link>
-     
-      <div className = {Landing.link}>
+      <img src={letsGo} alt="vamos" className={Style.letsGo} />
+      <div className = {Style.link}>
         <a
         href="https://www.linkedin.com/in/brian-paez" target="_blanck"  
         
         >
 
-          <img src={linkedin} alt= "linkedin" className={Landing.linkedin} />
+          <img src={linkedin} alt= "linkedin" className={Style.linkedin} />
         </a>
 
         <a
@@ -33,7 +34,7 @@ const landingPage = () => {
         
         >
 
-          <img src={github} alt= "gitHub" className={Landing.github} />
+          <img src={github} alt= "gitHub" className={Style.github} />
         </a>
  </div>
           </div>

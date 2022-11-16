@@ -1,56 +1,40 @@
+
+
 .baground {
+  background-image: url("../../img/charmander.gif");
+  width: 100%;
+  height: 100vh;
   background-size: cover;
-  background-position: cover;
-  height: 100%;
-  background-repeat: no-repeat;
-  display: flex; 
-  justify-content: space-between;
-  
-   height: 100%;
- width: 100%;
- background-attachment: fixed
-   /* background: no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; */
+  background-position:center;
+ margin-bottom: 0;
 }
 
+.letsGo{
+  position: absolute;
+  max-width: 600px;
+  top: 75%;
+  left: 61%;
+  background-color: transparent;
 
-.contDer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 25%;
+  height: 70px;
+
+  filter: drop-shadow(0px 3px 4px rgba(24, 121, 196));
+
+
 }
 .pokemon {
   position: absolute;
   max-width: 600px;
-  top: 20%;
-  left: 52%;
+  top: 23%;
+  left: 54%;
   background-color: transparent;
 
   width: 100px;
   height: 100px;
   width: 80%;
-  filter: drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0px 3px 4px rgb(24, 121, 196));
 }
-
-.fondo {
-  width: 100%;
-  height: 100%;
-}
-/* .titulo {
-  color: aqua;
-  background-color: transparent;
-  position: absolute;
-  top: 64%;
-  left: 71.4%;
-}
-.titulo:hover {
-  color: white;
-  background-color: transparent;
-  box-shadow: 0 10px 25px rgba(34, 161, 229, 0);
-} */
 
 .button {
   position: absolute;
@@ -67,11 +51,12 @@
   width: 100px;
   height: 100px;
   background-size: cover;
+  filter: drop-shadow(0px 3px 4px rgba(24, 121, 196))
 }
 
 .button:hover {
   color: white;
-  box-shadow: 0 10px 25px rgba(34, 161, 229, 0.6);
+  box-shadow: 0 10px 25px rgba(24, 121, 196);
 }
 
 .linkedin {
@@ -81,11 +66,12 @@
   max-height: 100px;
   background-color: transparent;
   border-radius: 100%;
+  filter: drop-shadow(0px 3px 4px rgba(24, 121, 196))
 }
 
 .linkedin:hover {
   color: white;
-  box-shadow: 0 15px 25px rgba(34, 161, 229, 0.6);
+  box-shadow: 0 15px 25px rgba(66, 182, 249, 0.6);
 }
 
 .github {
@@ -95,12 +81,12 @@
   max-height: 100px;
   background-color: transparent;
   border-radius: 100%;
- 
+  filter: drop-shadow(0px 3px 4px rgba(24, 121, 196))
 }
 
 .github:hover {
   color: white;
-  box-shadow: 0 15px 25px rgba(34, 161, 229, 0.6);
+  box-shadow: 0 15px 25px rgba(69, 185, 248, 0.6);
 }
 
 .links {

@@ -1,0 +1,64 @@
+.nav{
+
+background-image: url("../../img/3.png");
+background-size: contain;
+
+
+}
+
+.botonPage{
+  position: relative;
+ 
+  margin-bottom: 35px;
+  margin-top: 28px;
+  cursor: pointer;
+ border-radius: 55%;
+
+  background-image: url("../../img/pokeballs.png");
+width: 88px;
+height: 88px;
+background-size: cover;
+}
+
+.botonPage:hover{
+
+  color: white;
+  box-shadow: 0 10px 25px rgba(34, 161, 229, 0.6);
+}
+
+
+  
+  .search {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+
+
+.botonCreate {
+    position: relative;
+    top: 0;
+    left: 1%;
+   
+   
+    margin-bottom: 35px;
+    margin-top: 20px;
+    cursor: pointer;
+  border-radius: 50%;
+
+
+    background-image: url("../../img/pokeballfinal.png");
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+}
+
+.botonCreate:hover{
+
+    color: white;
+    box-shadow: 0 10px 25px rgba(34, 161, 229, 0.6);
+}

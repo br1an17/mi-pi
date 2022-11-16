@@ -5,8 +5,8 @@ const pokemons = require("./dataBase"); // mi base de datos
 
 
 const FunctionGet = async (name) => {
-  //const pokemonTotal = await pokemons; // base de datos propia
-  let pokemonTotal = await pokemonDB();
+  const pokemonTotal = await pokemons; // base de datos propia
+  //let pokemonTotal = await pokemonDB();
   const pokemonDataB = await Pokemon.findAll({
     include: {
       model: Types,
@@ -21,13 +21,16 @@ const FunctionGet = async (name) => {
     const pokemonFinal = pokemonTotal.filter(
       (pokemon) => pokemon.name.toLowerCase() === name.toLowerCase()
     );
+    if(pokemonFinal.length){
+    return pokemonFinal
+  }
     const pokemonDataB = await Pokemon.findOne({
       where: {
         name,
       },
     });
     const allPokemon = pokemonFinal.concat(pokemonDataB);
-
+  
     if (!allPokemon[0]) {
       throw new Error("Pokemon no encontrado");
     }
