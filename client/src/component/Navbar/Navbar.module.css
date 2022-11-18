@@ -1,3 +1,17 @@
+.Texto{
+ margin-top:80px ;
+ color: aliceblue;
+
+
+}
+
+
+
+
+
+
+
+
 .nav{
 
 background-image: url("../../img/3.png");
@@ -62,3 +76,20 @@ background-size: cover;
     color: white;
     box-shadow: 0 10px 25px rgba(34, 161, 229, 0.6);
 }
+.nav select{
+  border-radius: 10px;
+  cursor: pointer;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+

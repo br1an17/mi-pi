@@ -1,12 +1,29 @@
 
 
 .baground {
-  background-image: url("../../img/charmander.gif");
+  /* background-image: url("../../img/charmander.gif");
   width: 100%;
   height: 100vh;
   background-size: cover;
   background-position:center;
- margin-bottom: 0;
+ margin-bottom: 0; */
+
+  /* background-color: black; */
+  background-image: url("../../img/charmander.gif");
+  min-height: 100%;
+  width: 100%;
+  height: auto;
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 10;
+  left: 0;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+
 }
 
 .letsGo{
@@ -26,12 +43,12 @@
 .pokemon {
   position: absolute;
   max-width: 600px;
-  top: 23%;
-  left: 54%;
+  top: 20%;
+  left: 53%;
   background-color: transparent;
 
   width: 100px;
-  height: 100px;
+  height: 140px;
   width: 80%;
   filter: drop-shadow(0px 3px 4px rgb(24, 121, 196));
 }

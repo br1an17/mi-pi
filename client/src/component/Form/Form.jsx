@@ -1,186 +1,213 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Style from "./Form.module.css";
-import { postPokemones } from "../../actions/actions";
+import { ordenPorTipo, postPokemones } from "../../redux/actions/actions";
+import axios from "axios";
 
 const Form = () => {
   const dispatch = useDispatch();
-  // const mensaje = useSelector((state) => state.post);
-  // const error = useSelector((state) => state.error);
-  const initialState = { 
+
+  useEffect(() => {
+    dispatch(ordenPorTipo());
+  }, [dispatch]);
+
+  const pokeCreado = useSelector((state) => state.type);
+
+  const initialState = {
     name: "",
-  tipo: [],
-  vida: 0,
-  ataque: 0,
-  defensa: 0,
-  velocidad: 0,
-  peso: 0,
-  altura: 0,}
+    types: [],
+    hp: "",
+    attack: "",
+    defense: "",
+    speed: "",
+    weight: "",
+    height: "",
+  };
   const [input, setInput] = useState(initialState);
 
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
 
   const handleSumbit = (event) => {
     event.preventDefault();
 
-    if (!Object.keys(errors).length) {
-      // axios.post("http://localhost:3001/pokemon",input)
-      dispatch(postPokemones({
-        name:input.name,
-        hp:input.vida,
-        defense:input.defensa, 
-        speed:input.velocidad,
-        attack:input.ataque, 
-        height:input.altura, 
-        weight: input.peso,
-        types: input.tipo
-      }));
-      setInput(initialState);
-    } else {
-      alert("por favor llene los campos requeridos");
-    }
+    // if (!Object.keys(errors).length) {
+    //    axios.post("http://localhost:3001/pokemon",input)
+    dispatch(
+      postPokemones({
+        name: input.name,
+        hp: input.hp,
+        defense: input.defense,
+        speed: input.speed,
+        attack: input.attack,
+        height: input.height,
+        weight: input.weight,
+        types: input.types,
+      })
+    );
+    setInput(initialState);
+    // } else {
+    //   alert("por favor llene los campos requeridos");
+    // }
   };
- 
 
   const validateInput = (input) => {
     const errors = {};
     if (!input.name || input.name.length < 3) {
       errors.name = "Debe tener un nombre de mas de tres letras";
-    }
+      if (!input.hp || input.hp < 0 || input.hp > 150) {
+        errors.hp = "Debe tener una vida entre 1 - 150";
+      }
 
-    if (!input.vida || input.vida < 0 || input.vida > 150) {
-      errors.vida = "Debe tener una vida entre 1 - 150";
-    }
+      if (!input.attack || input.attack < 0 || input.attack > 150) {
+        errors.attack = "Debe tener un ataque entre 1 - 150";
+      }
 
-    if (!input.ataque || input.ataque < 0 || input.ataque > 150) {
-      errors.ataque = "Debe tener un ataque entre 1 - 150";
-    }
+      if (!input.defense || input.defense < 0 || input.defense > 150) {
+        errors.defense = "Debe tener una defensa entre 1 - 150";
+      }
 
-    if (!input.defensa || input.defensa < 0 || input.defensa > 150) {
-      errors.defensa = "Debe tener una defensa entre 1 - 150";
-    }
+      if (!input.speed || input.speed < 0 || input.speed > 150) {
+        errors.speed = "Debe tener una velocidad entre 1 - 150";
+      }
 
-    if (!input.velocidad || input.velocidad < 0 || input.velocidad > 150) {
-      errors.velocidad = "Debe tener una velocidad entre 1 - 150";
-    }
+      if (!input.weight || input.weight < 0 || input.weight > 20) {
+        errors.weight = "Debe tener una altura entre 1 - 50";
+      }
 
-    if (!input.altura || input.altura < 0 || input.altura > 20) {
-      errors.altura = "Debe tener una altura entre 1 - 50";
-    }
-    if (!input.peso || input.peso < 0 || input.peso > 1000) {
-      errors.peso = "Debe tener un peso entre 1 - 1000";
-    }
-    if (input.tipo.length === 0) {
-      errors.tipo = "Debe tener por lo menos un tipo";
-    }
+      if (!input.height || input.height < 0 || input.height > 1000) {
+        errors.height = "Debe tener un peso entre 1 - 1000";
+      }
 
-    return errors;
+      if (input.types.length === 0) {
+        errors.types = "Debe tener por lo menos un tipo";
+      }
+    
+      return errors;
+    }}
+
+    // useEffect(() => {
+    //   setErrors(validateInput(input));
+    // }, [input]);
+
+    const handleForm = (event) => {
+      setInput({
+        ...input,
+        [event.target.name]: event.target.value,
+      });
+      validateInput(input);
+    };
+
+    const [option, setOption] = useState([]);
+
+    const optionchange = (e) => {
+      setInput({
+        ...input,
+        types: [...input.types, e.target.value],
+      });
+      setOption([...option, e.target.value]);
+    };
+
+    return (
+      <div className={Style.contain}>
+        <h1> crear pokemon</h1>
+        <form onSubmit={handleSumbit}>
+          <div>
+            <label htmlFor="nombre">Nombre: </label>
+            <input
+              type="text"
+              name="name"
+              value={input.name}
+              onChange={handleForm}
+              required
+            />
+            <p>{errors.name && errors.name}</p>
+          </div>
+
+          <div>
+            <label htmlFor="tipo">Tipo: </label>
+
+            <select onChange={optionchange} >
+              {pokeCreado.map((e) => (
+                <option value={e.name} key={e.name}> {e.name}</option>
+              ))}
+            </select>
+            <input
+              type="text"
+              name="types"
+              value={input.types}
+              onChange={handleForm}
+            />
+
+            <p>{errors.types && errors.types}</p>
+          </div>
+
+          <div>
+            <label htmlFor="vida">Vida: </label>
+            <input
+              type="text"
+              name="hp"
+              value={input.hp}
+              onChange={handleForm}
+            />
+            <p>{errors.hp && errors.hp}</p>
+          </div>
+
+          <div>
+            <label htmlFor="ataque">Ataque: </label>
+            <input
+              type="text"
+              name="attack"
+              value={input.attack}
+              onChange={handleForm}
+            />
+            <p>{errors.attack && errors.attack}</p>
+          </div>
+
+          <div>
+            <label htmlFor="defensa">Defensa: </label>
+            <input
+              type="text"
+              name="defense"
+              value={input.defense}
+              onChange={handleForm}
+            />
+            <p>{errors.defense && errors.defense}</p>
+          </div>
+          <div>
+            <label htmlFor="altura">Altura: </label>
+            <input
+              type="text"
+              name="height"
+              value={input.height}
+              onChange={handleForm}
+            />
+            <p>{errors.height && errors.height}</p>
+          </div>
+          <div>
+            <label htmlFor="velocidad">Velocidad: </label>
+            <input
+              type="text"
+              name="speed"
+              value={input.speed}
+              onChange={handleForm}
+            />
+            <p>{errors.speed && errors.speed}</p>
+          </div>
+          <div>
+            <label htmlFor="peso">Peso: </label>
+            <input
+              type="text"
+              name="weight"
+              value={input.weight}
+              onChange={handleForm}
+            />
+            <p>{errors.weight && errors.weight}</p>
+          </div>
+          <button type="submit"> Crear un pokemon </button>
+        </form>
+      </div>
+    );
   };
 
-  useEffect(() => {
-    setErrors(validateInput(input));
-  }, [input]);
-
-  const handleForm = (event) => {
-    setInput({
-      ...input,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  return (
-    <div className={Style.contain}>
-      <h1> crear pokemon</h1>
-      <form onSubmit={handleSumbit}>
-        <div>
-          <label htmlFor="nombre">Nombre: </label>
-          <input
-            type="text"
-            name="name"
-            value={input.name}
-            onChange={handleForm}
-            required
-          />
-          <p>{errors.name && errors.name}</p>
-        </div>
-
-        <div>
-          <label htmlFor="tipo">Tipo: </label>
-          <input
-            type="text"
-            name="tipo"
-            value={input.tipo}
-            onChange={handleForm}
-          />
-          <p>{errors.tipo && errors.tipo}</p>
-        </div>
-
-        <div>
-          <label htmlFor="vida">Vida: </label>
-          <input
-            type="text"
-            name="vida"
-            value={input.vida}
-            onChange={handleForm}
-          />
-          <p>{errors.vida && errors.vida}</p>
-        </div>
-
-        <div>
-          <label htmlFor="ataque">Ataque: </label>
-          <input
-            type="text"
-            name="ataque"
-            value={input.ataque}
-            onChange={handleForm}
-          />
-          <p>{errors.ataque && errors.ataque}</p>
-        </div>
-
-        <div>
-          <label htmlFor="defensa">Defensa: </label>
-          <input
-            type="text"
-            name="defensa"
-            value={input.defensa}
-            onChange={handleForm}
-          />
-          <p>{errors.defensa && errors.defensa}</p>
-        </div>
-        <div>
-          <label htmlFor="altura">Altura: </label>
-          <input
-            type="text"
-            name="altura"
-            value={input.altura}
-            onChange={handleForm}
-          />
-          <p>{errors.altura && errors.altura}</p>
-        </div>
-        <div>
-          <label htmlFor="velocidad">Velocidad: </label>
-          <input
-            type="text"
-            name="velocidad"
-            value={input.velocidad}
-            onChange={handleForm}
-          />
-          <p>{errors.velocidad && errors.velocidad}</p>
-        </div>
-        <div>
-          <label htmlFor="peso">Peso: </label>
-          <input
-            type="text"
-            name="peso"
-            value={input.peso}
-            onChange={handleForm}
-          />
-          <p>{errors.peso && errors.peso}</p>
-        </div>
-        <button type="submit"> Crear un pokemon </button>
-      </form>
-    </div>
-  );
-};
 
 export default Form;

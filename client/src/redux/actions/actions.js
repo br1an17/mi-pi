@@ -4,7 +4,12 @@ export const GET_POKEMON = "GET_POKEMON";
 export const ERROR = "ERROR";
 export const POST_POKEMON = "POST_POKEMON";
 export const GETNAME_POKEMON =  "GETNAME_POKEMON"; 
-
+export const CURREN_PAGE = "CURREN_PAGE";
+export const ORDEN_NAME = "ORDEN_NAME";
+export const ORDEN_ATAQUE ="ORDEN_ATAQUE"
+export const ORDEN_TIPO ="ORDEN_TIPO"
+export const FILTRO_POR_TIPO = "FILTRO_POR_TIPO"
+export const BUSCAR_DETALLE ="BUSCAR_DETALLE"
 
 export const getPokemones = () => {
   return async function (dispatch) {
@@ -59,3 +64,63 @@ export function getNamePokemones(name) {
     }
   };
 }
+export const ordenPorTipo = () =>{
+
+ return async function(dispatch){
+   try {   
+     const res = await axios.get ("http://localhost:3001/tipo")
+    const types = res.data
+    dispatch({
+      type: ORDEN_TIPO,
+   payload: types
+    })
+   } catch (error) {
+     dispatch({
+       type:ERROR,
+       
+        payload:error
+     })
+
+   }
+ }
+}
+export const Detalles = (id) =>{
+return async function (dispatch){
+ try {
+  const pokeId = await axios.get (`http://localhost:3001/pokemon/${id}`)
+  return dispatch({
+  type:BUSCAR_DETALLE,
+  payload: pokeId.data[0]
+  }) 
+} catch (error) {
+  console.log("NO HAY DETALLE",error)
+ }
+}}
+
+
+export const paginaActual = (pagina)=>{
+  return {
+    type:CURREN_PAGE,
+    payload:pagina
+    
+  }
+  
+}
+export const ordenPorNombre = (payload) =>{
+  return{
+    type: ORDEN_NAME,
+    payload,
+  }
+}
+ export const ordenPorAtaque = (payload) =>{
+  return{
+    type: ORDEN_ATAQUE,
+    payload,
+  }
+ }
+ export const filtroPorTipo = (payload) =>{
+ return{
+ type: FILTRO_POR_TIPO,
+ payload,
+ }
+ }

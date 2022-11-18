@@ -5,8 +5,8 @@ const pokemons = require("./dataBase"); // mi base de datos
 
 
 const FunctionGet = async (name) => {
-  const pokemonTotal = await pokemons; // base de datos propia
-  //let pokemonTotal = await pokemonDB();
+   const pokemonTotal = await pokemons; // base de datos propia
+  // let pokemonTotal = await pokemonDB();
   const pokemonDataB = await Pokemon.findAll({
     include: {
       model: Types,
@@ -40,21 +40,26 @@ const FunctionGet = async (name) => {
 };
 
 const FunctionGetId = async (id) => {
-  const getId = await pokemonDB();
-   //const getId = await pokemons// base de datos propia 
+  //const getId = await pokemonDB();
+   const getId = await pokemons// base de datos propia 
 
   const pokemonId = getId.filter((pokemon) => pokemon.id === parseInt(id));
-  if (!pokemonId.length) {
+  
+  const pokeIdDb= await Pokemon.findByPk(id)
+   const res = [...pokemonId,pokeIdDb]
+   
+   
+  if (!res.length) {
     throw new Error(`No se encontro el pokemon con el ${id}`);
   }
-  return pokemonId;
+  return res;
 };
 
 const FunctionPost = async (body) => {
   const { types } = body;
 
-   const pokemonId = await pokemonDB();
-  //const pokemonId = await pokemons; // esta es mi base dde datos
+   //const pokemonId = await pokemonDB();
+  const pokemonId = await pokemons; // esta es mi base dde datos
   const idPokemon = await Pokemon.findAll();
   const allID = pokemonId.concat(idPokemon);
 

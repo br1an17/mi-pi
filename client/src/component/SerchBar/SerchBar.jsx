@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getNamePokemones } from "../../actions/actions";
+import { getNamePokemones } from "../../redux/actions/actions";
 
 const SerchBar = ()=>{
 

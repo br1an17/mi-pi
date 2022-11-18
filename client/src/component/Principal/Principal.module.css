@@ -3,18 +3,17 @@
   background-size: cover;
   background-position: cover;
 
-
-  justify-content: space-between;
-
   height: 100%;
   width: 100%;
   background-attachment: fixed;
+  
  
+  
  
 }
 
 .contain {
-  display: flow-root;
+  display: inline-flex;
   justify-content: space-between;
   flex-direction: column;
   border: 3px solid black;
