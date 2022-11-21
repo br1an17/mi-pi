@@ -1,26 +1,13 @@
-.baground {
+.fondo {
   background-image: url("../../img/pokBack6.jpg");
-  background-size: cover;
-  background-position: cover;
-
-  height: 100%;
-  width: 100%;
-  background-attachment: fixed;
-  
- 
-  
- 
+   min-height: 100%;
+   background-size: cover;
+ background-attachment: fixed;
+ height: auto;
+ margin-bottom: -25px;
 }
 
-.contain {
-  display: inline-flex;
-  justify-content: space-between;
-  flex-direction: column;
-  border: 3px solid black;
-  border-radius: 5px;
-  margin: 10px 10px 10px 15px;
 
-}
 .info {
   display: flex;
 }

@@ -4,20 +4,51 @@ import Pokemones from "../Pokemon/Pokemones";
 import Style from "./Principal.module.css" 
 
 import Paginado from "../Paginado/Paginado";
-import { useSelector } from "react-redux";
+// import { useDispatch} from "react-redux";
+import BotonNombre from "../BotonNombre/BotonNombre";
+import { BotonPoder } from "../BotonPoder/BotonPoder";
+import BotonTipo from "../BotonTipo/BotonTipo";
+
+import { getPokemones } from "../../redux/actions/actions";
+import BotonCreado from "../BotonCreado/BotonCreado";
+
+
+
 
 
 
 
 const Principal = () => {
-const pito =useSelector(state =>state.pokeDetalle)
-console.log(pito)
+//puede ser la sulucon del tipo
+//  const dispatch = useDispatch()
+// const handleClick =(e)=>{
+// e.preventDefault();
+// dispatch(getPokemones(e.target.value))
+
+
+// }
+
+const [creado,setCreado] = useState(false)
+const[order,setOrder]=useState(false)
+const[Maxmin,setMaxMin]=useState(false) 
 
   return (
       <div >
-        <div className={Style.baground} >
+        <div className={Style.fondo} >
          <SerchBar/>
           <div>
+          <BotonCreado setCreado={setCreado} creado={creado}/>
+          <BotonNombre setOrder={setOrder} order ={order}/>
+          <BotonPoder setMaxMin={setMaxMin} Maxmin ={Maxmin}/>
+          <BotonTipo  />
+
+          <button
+           onClick={() => window.location.reload()}
+            className={Style.button}
+          >
+            Reload
+          </button>
+          
           <Paginado />
 
           <Pokemones />

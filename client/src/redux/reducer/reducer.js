@@ -9,6 +9,8 @@ import {
   ORDEN_TIPO,
   FILTRO_POR_TIPO,
   BUSCAR_DETALLE,
+  BORRAR_DETALLE,
+ FILTRO_POR_CREACION,
 } from "../actions/actions";
 
 const initialState = {
@@ -17,7 +19,7 @@ const initialState = {
   pokemonFiltrados: [],
   error: {},
   post: {},
-  pokeDetalle:[],
+  pokeDetalle: [],
   //  pokecard:[],
   type: [],
   currentPage: "",
@@ -48,7 +50,9 @@ export default function rootReducer(state = initialState, action) {
       };
 
     case ORDEN_NAME:
-      const pokemonesName = [...state.pokemon];
+      const pokemonesName = state.pokemonFiltrados.length
+        ? state.pokemonFiltrados
+        : state.pokemon;
       const filtroNombre =
         action.payload === "A-Z"
           ? pokemonesName.sort((a, b) => {
@@ -72,12 +76,15 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         pokemon: filtroNombre,
+        pokemonFiltrados: filtroNombre,
         currentPage: 1,
         error: false,
       };
     case ORDEN_ATAQUE:
       // const ataquesFiltrados= state.pokemonFiltrados.length?state.pokemonFiltrados:state.pokemon
-      const ataquePokemon = [...state.pokemon];
+      const ataquePokemon = state.pokemonFiltrados.length
+        ? state.pokemonFiltrados
+        : state.pokemon;
       const filtroAtaque =
         action.payload === "Min - Max"
           ? ataquePokemon.sort((a, b) => {
@@ -101,7 +108,7 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         pokemon: filtroAtaque,
-        // pokemonFiltrados:filtroAtaque,
+        pokemonFiltrados: filtroAtaque,
         currentPage: 1,
         error: false,
       };
@@ -114,9 +121,9 @@ export default function rootReducer(state = initialState, action) {
     case FILTRO_POR_TIPO:
       const tipoPokemon = [...state.pokemon];
       const filtroPokemon =
-        action.payload === "tipo"
+        action.payload === ""
           ? state.pokemon
-          : state.tipoPokemon.filter((e) => e.types.includes(action.payload));
+          : state.pokemon.filter((e) => e.types.includes(action.payload));
       return {
         ...state,
         pokemonFiltrados: filtroPokemon,
@@ -124,9 +131,29 @@ export default function rootReducer(state = initialState, action) {
         error: false,
       };
     case BUSCAR_DETALLE:
-      return { ...state,
-         pokeDetalle: action.payload,
-        pokemon:[action.payload] };
+      return {
+        ...state,
+        pokeDetalle: action.payload,
+        pokemon: [action.payload],
+      };
+
+    case FILTRO_POR_CREACION:
+      const pokeCreado = state.pokemon;
+      let pokemonesCreados =
+        action.payload === "creado"
+          ? pokeCreado.filter((e) => e.cretedInDb)
+          : action.payload === "existente"
+          ? pokeCreado.filter((e) => !e.cretedInDb)
+          : "";
+           console.log(pokemonesCreados)
+           console.log(pokeCreado)
+      return {
+        ...state,
+        pokemonFiltrados: pokemonesCreados,
+      };
+
+    case BORRAR_DETALLE:
+      return { ...state, pokeDetalle: [] };
 
     case ERROR:
       return {

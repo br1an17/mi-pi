@@ -1,27 +1,80 @@
-.baground{
-    background-image: url("../../img/pokBack6.jpg" );
-    background-size: cover;
-    background-position: cover;
-  
-    /* display: flex;  */
-    justify-content: space-between;
-    
-     height: 100%;
-   width: 100%;
-   background-attachment: fixed
-  }
+
 
     
     .contain{
+        
+       background-color: rgba(43, 66, 50, 0.484);
         justify-content: space-between;
-        margin: 10px;
+        margin: 17px;
         display: inline-flex;
         flex-direction: column;
         border: 3px  solid black;
-        border-radius: 5px;
-    
+        border-radius: 10px; 
+        width: 30%;
+     
+        /* border-radius: 75% 25% 70% 30% / 30% 30% 70% 70% ;la hace redondita */
+
     }
-    
+
+
+
+ .img{
+    padding: 10px;
+        align-items: center;
+        justify-content: center;
+      height: 50%;
+      filter: drop-shadow(0px 3px 4px rgb(10, 10, 10))
+    }
+
+.boton{
+
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background: rgb(21, 20, 20); /* color de fondo */
+    color: #efeff5; /* color de fuente */
+    /* border: 2px solid #151516; tamaño y color de borde */
+    padding: 10px ;
+    border-radius: 20px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    margin-bottom:10px ;
+    font-size: 20px;
+    width: 30%;
+    filter: drop-shadow(0px 3px 4px rgb(12, 12, 12))
+  }
+  .boton:hover {
+   
+    color: rgb(239, 10, 10);/* color de fuente hover */
+  }
+  .boton::after {
+    content: "";
+    background: #f7f2f2; /* color de fondo hover */
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.3s ease;
+  }
+  .boton:hover::after {
+    transition: all 0.3s ease-out;
+    transform: skewX(-45deg) scale(1, 1);
+  }  
+
+
     .info{
         display: flex;
+    }
+    .texto{
+     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+       font-size: 40px;
+     color: rgb(252, 249, 249);
+     filter: drop-shadow(0px 3px 4px rgb(12, 12, 12))
+
+
     }

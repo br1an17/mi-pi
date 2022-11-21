@@ -1,106 +1,73 @@
+
+.fondo{
+background-image: url("../../img/pokebola\ abierta.jpg");
+background-size: cover;
+  background-position: cover; 
+  height: 100%;
+  width: 100%;
+  background-attachment: fixed;
+  margin-bottom: -30px;
+}
 .contain {
-  border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
-   /* min-height: 23;
-  max-height: 23rem; */
-  width: 16rem; 
   justify-content: space-evenly;
-  text-decoration: none;
+   text-decoration: none;
   transition: all 0.3s ease-in-out;
-  background-color: #fff;
-  width: 250px;
-  margin: 0.5rem;
+  background-color:rgba(0, 0, 0, 0.062);
+  width: 500px;
+  margin: auto;
 }
-
-.contain .img {
-  max-width: 50%;
-}
-
+.img{
+  margin-top: 80px;
+  margin-right: 20px;
+  padding: 10px;
+      align-items: center;
+      justify-content: center;
+    height: 50%;
+    filter: drop-shadow(0px 3px 4px rgb(245, 6, 6))
+  }
 .name {
-  font-family: "Rubik", sans-serif;
-  font-weight: 600;
-  font-size: 1.7em;
-  color: #66625c;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 40px;
+color: rgb(252, 249, 249);
+filter: drop-shadow(0px 3px 4px rgb(252, 7, 7))
 }
-
-.types {
-  display: flex;
-  justify-content: center;
-  gap: 10%;
-  font-family: "Rubik", sans-serif;
-  font-size: 1em;
+.boton{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background: rgb(21, 20, 20); /* color de fondo */
+  color: #efeff5; /* color de fuente */
+  /* border: 2px solid #151516; tamaño y color de borde */
+  padding: 10px ;
+  border-radius: 20px; /* redondear bordes */
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  margin-bottom:10px ;
+  font-size: 20px;
+  width: 30%;
+  filter: drop-shadow(0px 3px 4px rgb(12, 12, 12))
 }
-
-.types div {
-  color: #fff;
-  display: flex;
-  font-weight: 400;
-  justify-content: center;
-  align-items: center;
-  width: 5.5rem;
-  height: 2rem;
-  border-radius: 20px;
+.boton:hover {
+  color: rgb(239, 10, 10);/* color de fuente hover */
 }
-
-.contCard:hover {
-  transform: scale(1.03);
+.boton::after {
+  content: "";
+  background: #f7f2f2; /* color de fondo hover */
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  left: -20%;
+  right: -20%;
+  top: 0;
+  bottom: 0;
+  transform: skewX(-45deg) scale(0, 1);
+  transition: all 0.3s ease;
 }
-
-@media screen and (max-width: 600px) {
-  .contCard {
-    width: 200px;
-    height: 300px;
-    margin-bottom: 20px;
-  }
-}
-
-
-
-/* .pokemon {
-    flex: 0 0 20%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: stretch;
-    margin-bottom: 2vh;
-    margin-top: 2vh;
-    background: rgb(255, 255, 255);
-    border-radius: 5px;
-    transition: all 0.2s;
-    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
-    height: 500px;
-    height: max-content;
-    background-color: rgb(227, 227, 227);
-  }
-  .dogs:hover {
-    box-shadow: -12px 12px 2px -1px rgba(0, 0, 255, 0.2);
-  }
-  
-  .dogs img {
-    width: 400px;
-    border-radius: 1%;
-    border-bottom: 0.5px solid;
-  }
-  
-  .dogs2 {
-    margin-top: 2vh;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-  
-    align-items: stretch;
-    justify-content: space-around;
-    width: 100%;
-  }
-  
-  .cardDog {
-    flex: 0 0 100%;
-    display: flex;
-    justify-content: space-between;
-    width: 250px;
-  } */
+.boton:hover::after {
+  transition: all 0.3s ease-out;
+  transform: skewX(-45deg) scale(1, 1);
+}  

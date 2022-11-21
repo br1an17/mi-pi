@@ -5,6 +5,7 @@ const pokemonDB = async () => {
   try {
     // Desestructuramos la data
     const {data} = await axios
+    // get.(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=40`)
       .get("https://pokeapi.co/api/v2/pokemon?limit=40")
     // Desestructuramos los results
     const { results } = data;

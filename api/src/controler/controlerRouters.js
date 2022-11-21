@@ -45,7 +45,11 @@ const FunctionGetId = async (id) => {
 
   const pokemonId = getId.filter((pokemon) => pokemon.id === parseInt(id));
   
-  const pokeIdDb= await Pokemon.findByPk(id)
+  const pokeIdDb= await Pokemon.findByPk(id,{
+    include:{
+      model:Types,
+    }
+  })
    const res = [...pokemonId,pokeIdDb]
    
    
@@ -65,7 +69,6 @@ const FunctionPost = async (body) => {
 
   body.id = allID.length + 1;
   const createPokemon = await Pokemon.create(body);
-
   if (types) {
     const pokemonFinal = types.map(async (type) => {
       const typeFount = await Types.findAll({

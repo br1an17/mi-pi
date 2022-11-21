@@ -1,95 +1,77 @@
-.Texto{
- margin-top:80px ;
- color: aliceblue;
-
-
+.nav {
+  background-image: url("../../img/3.png");
+  background-size: contain;
+  height: 100%;
+  width: 100%;
+  margin-top: -20px;
+  margin-bottom: -20px;
+}
+.Texto {
+  margin-top: 80px;
+  color: aliceblue;
 }
 
-
-
-
-
-
-
-
-.nav{
-
-background-image: url("../../img/3.png");
-background-size: contain;
-
-
-}
-
-.botonPage{
+.botonPrincipal {
   position: relative;
- 
+  top: 0;
+  left: 1%;
   margin-bottom: 35px;
-  margin-top: 28px;
+  margin-top: 20px;
   cursor: pointer;
- border-radius: 55%;
-
-  background-image: url("../../img/pokeballs.png");
-width: 88px;
-height: 88px;
-background-size: cover;
-}
-
-.botonPage:hover{
-
-  color: white;
-  box-shadow: 0 10px 25px rgba(34, 161, 229, 0.6);
-}
-
-
-  
-  .search {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-
-
-.botonCreate {
-    position: relative;
-    top: 0;
-    left: 1%;
-   
-   
-    margin-bottom: 35px;
-    margin-top: 20px;
-    cursor: pointer;
   border-radius: 50%;
-
-
-    background-image: url("../../img/pokeballfinal.png");
+  background-image: url("../../img/pokebolas\ negra.jpg");
   width: 80px;
   height: 80px;
   background-size: cover;
 }
 
-.botonCreate:hover{
-
-    color: white;
-    box-shadow: 0 10px 25px rgba(34, 161, 229, 0.6);
+.botonPrincipal:hover {
+  color: white;
+  box-shadow: 0 10px 25px rgba(222, 228, 232, 0.6);
 }
-.nav select{
+.botonPage {
+  position: relative;
+  margin-bottom: 35px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 55%;
+  background-image: url("../../img/pokebolas\ azul.jpg");
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+}
+.botonPage:hover {
+  color: white;
+  box-shadow: 0 10px 25px rgba(226, 233, 237, 0.6);
+}
+.search {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.botonCreate {
+  position: relative;
+  top: 0;
+  left: 1%;
+  margin-bottom: 35px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-image: url("../../img/pokeballfinal.png");
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+}
+
+.botonCreate:hover {
+  color: white;
+  box-shadow: 0 10px 25px rgba(218, 224, 227, 0.6);
+}
+.nav select {
   border-radius: 10px;
   cursor: pointer;
-  
 }
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { ordenPorNombre } from "../../redux/actions/actions";
 
-const BotonNombre = () =>{
-const[order,setOrder]=useState(false)
+const BotonNombre = ({setOrder,order}) =>{
+
+// const[order,setOrder]=useState(false)
 
 const dispatch = useDispatch();
 
 const handlerOrder = (e) =>{
     setOrder(!order)
-    if (e.target.value === "A-Z" || e.target.value === "Z-A")
+    // if (e.target.value === "A-Z" || e.target.value === "Z-A")
      e.preventDefault();
      dispatch(ordenPorNombre(e.target.value))
   }

@@ -10,6 +10,8 @@ export const ORDEN_ATAQUE ="ORDEN_ATAQUE"
 export const ORDEN_TIPO ="ORDEN_TIPO"
 export const FILTRO_POR_TIPO = "FILTRO_POR_TIPO"
 export const BUSCAR_DETALLE ="BUSCAR_DETALLE"
+ export const FILTRO_POR_CREACION = "FILTRO_POR_CREACION"
+export const BORRAR_DETALLE = "BORRAR_DETALLE"
 
 export const getPokemones = () => {
   return async function (dispatch) {
@@ -96,8 +98,6 @@ return async function (dispatch){
   console.log("NO HAY DETALLE",error)
  }
 }}
-
-
 export const paginaActual = (pagina)=>{
   return {
     type:CURREN_PAGE,
@@ -123,4 +123,17 @@ export const ordenPorNombre = (payload) =>{
  type: FILTRO_POR_TIPO,
  payload,
  }
+ }
+ export const filtroCreado = (value) =>{
+ return{
+
+type: FILTRO_POR_CREACION,
+payload:value
+
+ }
+
+ }
+ export const borrarDetalle = () =>{
+ return {type: BORRAR_DETALLE}
+
  }
