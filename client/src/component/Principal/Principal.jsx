@@ -31,13 +31,14 @@ const Principal = () => {
 const [creado,setCreado] = useState(false)
 const[order,setOrder]=useState(false)
 const[Maxmin,setMaxMin]=useState(false) 
-
+const [render,setRender] = useState(false)
   return (
       <div >
         <div className={Style.fondo} >
          <SerchBar/>
-          <div>
-          <BotonCreado setCreado={setCreado} creado={creado}/>
+          <div   className={Style.org} >
+          
+          <BotonCreado setCreado={setCreado} creado={creado}/>   
           <BotonNombre setOrder={setOrder} order ={order}/>
           <BotonPoder setMaxMin={setMaxMin} Maxmin ={Maxmin}/>
           <BotonTipo  />
@@ -49,7 +50,7 @@ const[Maxmin,setMaxMin]=useState(false)
             Reload
           </button>
           
-          <Paginado />
+          <Paginado setRender={setRender} render={render} />
 
           <Pokemones />
           </div>

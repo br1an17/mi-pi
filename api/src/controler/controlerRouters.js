@@ -27,7 +27,12 @@ const FunctionGet = async (name) => {
     const pokemonDataB = await Pokemon.findOne({
       where: {
         name,
+
       },
+        include:[{
+          model:Types
+        }]
+      
     });
     const allPokemon = pokemonFinal.concat(pokemonDataB);
   

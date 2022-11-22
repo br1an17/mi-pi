@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getNamePokemones } from "../../redux/actions/actions";
 
 const SerchBar = ()=>{
@@ -16,7 +16,7 @@ const SerchBar = ()=>{
           dispatch(getNamePokemones(input));
           setInput("");
         };
-        
+
 
       
         return (

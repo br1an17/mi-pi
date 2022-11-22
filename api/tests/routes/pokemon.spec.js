@@ -3,10 +3,11 @@ const { expect } = require('chai');
 const session = require('supertest-session');
 const app = require('../../src/app.js');
 const { Pokemon, conn } = require('../../src/db.js');
-
+// const  {tiposDB} = require ("../../src/controler/controlerTypo")
 const agent = session(app);
 const pokemon = {
   name: 'Pikachu',
+  id: 1
 };
 
 describe('Pokemon routes', () => {

@@ -145,8 +145,8 @@ export default function rootReducer(state = initialState, action) {
           : action.payload === "existente"
           ? pokeCreado.filter((e) => !e.cretedInDb)
           : "";
-           console.log(pokemonesCreados)
-           console.log(pokeCreado)
+          //  console.log(pokemonesCreados)
+          //  console.log(pokeCreado)
       return {
         ...state,
         pokemonFiltrados: pokemonesCreados,
