@@ -1,9 +1,19 @@
-.contCards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    /* align-items: center; */
-    /* gap: 20px; */
-    flex-grow: 1;
-    padding-inline: 0.5rem;
-  }
+
+img {
+  border-radius: 10px;
+    font-size: 10px;
+    display: inline ;
+   background-color:transparent;
+   justify-content:space-between;
+   position: relative;
+     }
+
+.numeros{
+        font-size: 908px;
+        display:flex;
+      color: red;
+       justify-content:space-between;
+       margin-left: 10px;
+       position: relative;
+         }
+     

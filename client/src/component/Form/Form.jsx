@@ -34,7 +34,6 @@ const validateInput = (input) => {
     if (!input.types.length) {
       errors.types = "Debe tener por lo menos un tipo";
     }
-    // if(input.name &&input.hp && input.attack&&input.defense&&input.speed&&input.weight&&input.height)
 
     return errors;
   }
@@ -44,11 +43,7 @@ const Form = () => {
   const pokeCreado = useSelector((state) => state.type);
   const [errors, setErrors] = useState({});
 
-  useEffect(() => {
-    dispatch(ordenPorTipo());
-    setErrors(validateInput(input)); ///
-  }, [dispatch]);
-
+  
   const initialState = {
     name: "",
     types: [],
@@ -60,7 +55,11 @@ const Form = () => {
     height: "",
   };
   const [input, setInput] = useState(initialState);
-
+  useEffect(() => {
+    dispatch(ordenPorTipo());
+    setErrors(validateInput(input)); ///
+  }, [dispatch,input]);
+  
   const handleSumbit = (event) => {
     event.preventDefault();
     alert("Pokemon creado");
@@ -81,17 +80,12 @@ const Form = () => {
     setInput(initialState);
   };
 
-  useEffect(() => {
-    setErrors(validateInput(input));
-  }, [input]);
-
   const handleForm = (event) => {
     setInput({
       ...input,
       [event.target.name]: event.target.value,
     });
     validateInput(input);
-    // console.log(input);
   };
 
   const [option, setOption] = useState([]);
@@ -104,14 +98,20 @@ const Form = () => {
     setOption([...option, e.target.value]);
   };
 
+  const handleReset = () =>{
+   setOption([]);
+
+  }
+
   return (
     <div className={Style.fondo}>
       <div className={Style.contain}>
         <h1 className={Style.title}> Nuevo pokemon</h1>
-        <form onSubmit={handleSumbit}>
+        <form disable onSubmit={handleSumbit}>
           <div>
             <label htmlFor="nombre">Nombre: </label>
             <input
+            className={Style.search}
               type="text"
               name="name"
               value={input.name}
@@ -123,31 +123,35 @@ const Form = () => {
 
           <div>
             <label htmlFor="tipo">Tipo: </label>
-            <select onChange={optionchange}>
+            <select className={Style.tipo} onChange={optionchange}>
               {pokeCreado.map((e) => (
                 <option value={e.name} key={e.name}>
-                 
-                  {e.name}
+                  {e.name[0].toUpperCase()+e.name.slice(1)}
                 </option>
               ))}
             </select>
 
             <input
+             className={Style.search}
               type="text"
               name="types"
               value={option}
               onChange={handleForm}
+              required
             />
+            <button className={Style.botonBorrar} type= "button" onClick={handleReset}>X</button>
             <p className={Style.p}>{errors.types && errors.types}</p>
           </div>
 
           <div>
             <label htmlFor="vida">Vida: </label>
             <input
+             className={Style.search}
               type="text"
               name="hp"
               value={input.hp}
               onChange={handleForm}
+              required
             />
             <p className={Style.p}>{errors.hp && errors.hp}</p>
           </div>
@@ -155,10 +159,12 @@ const Form = () => {
           <div>
             <label htmlFor="ataque">Ataque: </label>
             <input
+             className={Style.search}
               type="text"
               name="attack"
               value={input.attack}
               onChange={handleForm}
+              required
             />
             <p className={Style.p}>{errors.attack && errors.attack}</p>
           </div>
@@ -166,44 +172,53 @@ const Form = () => {
           <div>
             <label htmlFor="defensa">Defensa: </label>
             <input
+             className={Style.search}
               type="text"
               name="defense"
               value={input.defense}
               onChange={handleForm}
+              required
             />
             <p className={Style.p}>{errors.defense && errors.defense}</p>
           </div>
           <div>
             <label htmlFor="altura">Altura: </label>
             <input
+             className={Style.search}
               type="text"
               name="height"
               value={input.height}
               onChange={handleForm}
+              required
             />
             <p className={Style.p}>{errors.height && errors.height}</p>
           </div>
           <div>
             <label htmlFor="velocidad">Velocidad: </label>
             <input
+             className={Style.search}
               type="text"
               name="speed"
               value={input.speed}
               onChange={handleForm}
+              required
             />
             <p className={Style.p}>{errors.speed && errors.speed}</p>
           </div>
           <div>
             <label htmlFor="peso">Peso: </label>
             <input
+             className={Style.search}
               type="text"
               name="weight"
               value={input.weight}
               onChange={handleForm}
+              required
             />
             <p className={Style.p}>{errors.weight && errors.weight}</p>
           </div>
-          <button className={Style.boton} type="submit">
+
+          <button className={Style.boton} >
             {" "}
             Crear un pokemon{" "}
           </button>

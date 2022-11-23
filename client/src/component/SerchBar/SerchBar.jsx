@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getNamePokemones } from "../../redux/actions/actions";
+import Style from "./Serchbar.module.css"
 
 const SerchBar = ()=>{
 
@@ -22,6 +23,7 @@ const SerchBar = ()=>{
         return (
           <div>
             <input
+            className={Style.serch}
               type="text"
               placeholder="nombre del pokemon"
               onChange={handleInput}
@@ -29,10 +31,11 @@ const SerchBar = ()=>{
         
             />
             <button
+            className={Style.boton}
               type="submit"
               onClick={handleSubmit}
       
-            > buscar
+            > Buscar
             </button>
           </div>
         );

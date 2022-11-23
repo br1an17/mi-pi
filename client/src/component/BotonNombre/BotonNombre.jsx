@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { ordenPorNombre } from "../../redux/actions/actions";
-
+import Style from "./BotonNombre.module.css";
 const BotonNombre = ({setOrder,order}) =>{
 
 // const[order,setOrder]=useState(false)
@@ -19,7 +19,8 @@ const handlerOrder = (e) =>{
 
 
 
-<select onChange={handlerOrder}>
+<select className={Style.nombre} 
+onChange={handlerOrder}>
         <option>Filtro nombre </option>
         <option value="A-Z">A - Z</option>
         <option value="Z-A">Z - A</option>

@@ -1,0 +1,43 @@
+.img{
+    background-image: url("../../img/error.jpg");
+  min-height: 100%;
+  width: 100%;
+  height: auto;
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 10;
+  left: 0;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+.botonPrincipal {
+    position: relative;
+    margin-bottom: 35px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    background-image: url("../../img/pokeballfinal.png");
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    text-decoration: none;
+    filter: drop-shadow(0px 3px 4px rgb(234, 50, 50))
+  }
+  
+  .botonPrincipal:hover {
+    color: white;
+    box-shadow: 0 10px 25px rgba(222, 228, 232, 0.6);
+  }
+
+  .text{
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  margin-top: 90px;
+  color: rgb(247, 242, 240);
+  text-decoration: none;
+  filter: drop-shadow(0px 3px 4px rgb(234, 50, 50))
+}

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { paginaActual } from "../../redux/actions/actions";
+import Style from "./Paginado.moule.css"
+import flechaI from "../../img/flecha 2 .png"
+import flechaD from "../../img/right-arrow.png"
 
 export default function Paginado({setRender,render}) {
   const dispatch = useDispatch();
@@ -42,32 +45,21 @@ const handlePrev = () =>{
   }
 }
 
-
-
-
-
-console.log(nPages)
-console.log(currentPage,"2")
-
   return (
-    <>
-     <li>
-            <button onClick={handlePrev}>
-            boton
-            </button>
-          </li>
-      <div>
+    <div >
+            <button  onClick={handlePrev}>
+            <img src={flechaD} height="20px" width="20px" alt="atras"/>
+            </button>  
+      <div >
         {nPages.map((number) => (
-          <div key={number}>
-            <button onClick={() => handleClick(number)}>{number}</button>
+          <div  key={number}>
+            <button  onClick={() => handleClick(number)}>{number}</button>
           </div>
         ))}
       </div>
-      <li>
-            <button onClick={handleNext}>
-             boton
-            </button>
-          </li>
-    </>
+            <button  onClick={handleNext}>
+             <img src={flechaI} height="20px" width="20px"  alt="flecha =>" />
+            </button>  
+    </div>
   );
 }

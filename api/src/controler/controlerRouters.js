@@ -45,9 +45,9 @@ const FunctionGet = async (name) => {
 };
 
 const FunctionGetId = async (id) => {
-  //const getId = await pokemonDB();
+  
    const getId = await pokemons// base de datos propia 
-
+   //const getId = await pokemonDB();
   const pokemonId = getId.filter((pokemon) => pokemon.id === parseInt(id));
   
   const pokeIdDb= await Pokemon.findByPk(id,{
@@ -66,9 +66,9 @@ const FunctionGetId = async (id) => {
 
 const FunctionPost = async (body) => {
   const { types } = body;
-
-   //const pokemonId = await pokemonDB();
   const pokemonId = await pokemons; // esta es mi base dde datos
+   //const pokemonId = await pokemonDB();
+
   const idPokemon = await Pokemon.findAll();
   const allID = pokemonId.concat(idPokemon);
 

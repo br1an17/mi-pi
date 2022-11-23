@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import { borrarDetalle, Detalles } from "../../redux/actions/actions";
+import { Link, useHistory, useParams } from "react-router-dom";
+import {
+  borrarDetalle,
+  borrarPokemon,
+  Detalles,
+  getPokemones,
+} from "../../redux/actions/actions";
 import Styles from "./Card.module.css";
 
 export default function Card() {
@@ -18,6 +23,15 @@ export default function Card() {
 
   const pokeDetalle = useSelector((state) => state.pokeDetalle);
 
+  const history = useHistory();
+  
+  const handlerDelete = () => {
+    dispatch(borrarPokemon(id));
+    alert("Pokemon eliminado");
+    history.push("/principal");
+    dispatch(getPokemones());
+  };
+
   return (
     <div className={Styles.fondo}>
       {Object.keys(pokeDetalle).length ? (
@@ -30,7 +44,10 @@ export default function Card() {
           {id > 40 ? (
             <h1 className={Styles.name}>Tipo: {pokeDetalle.types[0].name} </h1>
           ) : (
-            <h1 className={Styles.name}>Tipo: {pokeDetalle.types.join(", ")} </h1>
+            <h1 className={Styles.name}>
+              Tipo: {pokeDetalle.types.join(", ")}{" "}
+              {/* Tipo: {pokeDetalle.types} */}
+            </h1>
           )}
           <h1 className={Styles.name}>
             Vida: {pokeDetalle.hp} | Peso: {pokeDetalle.weight}{" "}
@@ -38,10 +55,16 @@ export default function Card() {
           <h1 className={Styles.name}>
             velocidad: {pokeDetalle.speed} | Altura: {pokeDetalle.height}{" "}
           </h1>
-
+          <div>
+            {id > 40 &&(
+              <button className={Styles.boton} onClick={handlerDelete}>
+            Borrar pokemon
+          </button>
+            )}
           <Link to="/principal">
             <button className={Styles.boton}> Todos los pokemones </button>
           </Link>
+          </div>
         </div>
       ) : (
         <h1>cargando</h1>

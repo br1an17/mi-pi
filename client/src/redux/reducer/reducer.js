@@ -11,16 +11,15 @@ import {
   BUSCAR_DETALLE,
   BORRAR_DETALLE,
  FILTRO_POR_CREACION,
+ BORRAR_POKEMON,
 } from "../actions/actions";
 
 const initialState = {
-  pokemonReal: [],
   pokemon: [],
   pokemonFiltrados: [],
   error: {},
   post: {},
   pokeDetalle: [],
-  //  pokecard:[],
   type: [],
   currentPage: "",
 };
@@ -31,7 +30,6 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         pokemon: [...action.payload],
-        pokemonReal: action.payload,
       };
     case POST_POKEMON:
       return {
@@ -145,8 +143,6 @@ export default function rootReducer(state = initialState, action) {
           : action.payload === "existente"
           ? pokeCreado.filter((e) => !e.cretedInDb)
           : "";
-          //  console.log(pokemonesCreados)
-          //  console.log(pokeCreado)
       return {
         ...state,
         pokemonFiltrados: pokemonesCreados,
@@ -154,6 +150,15 @@ export default function rootReducer(state = initialState, action) {
 
     case BORRAR_DETALLE:
       return { ...state, pokeDetalle: [] };
+
+      case BORRAR_POKEMON:
+
+      const eliminarPokemon = state.pokemonFiltrados.filter((e)=> e.includes
+      !== action.payload)
+        return{
+          ...state,
+          pokemonFiltrados:eliminarPokemon
+        }
 
     case ERROR:
       return {

@@ -38,7 +38,6 @@ filter: drop-shadow(0px 3px 4px rgb(252, 7, 7))
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   background: rgb(21, 20, 20); /* color de fondo */
   color: #efeff5; /* color de fuente */
-  /* border: 2px solid #151516; tamaño y color de borde */
   padding: 10px ;
   border-radius: 20px; /* redondear bordes */
   position: relative;
@@ -48,7 +47,8 @@ filter: drop-shadow(0px 3px 4px rgb(252, 7, 7))
   margin-bottom:10px ;
   font-size: 20px;
   width: 30%;
-  filter: drop-shadow(0px 3px 4px rgb(12, 12, 12))
+  filter: drop-shadow(0px 3px 4px rgb(239, 21, 21));
+  margin-inline: 30px;
 }
 .boton:hover {
   color: rgb(239, 10, 10);/* color de fuente hover */

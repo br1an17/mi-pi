@@ -20,3 +20,24 @@ describe('Pokemon model', () => {
     });
   });
 });
+//______________________________________//
+
+
+it("que el pokemon se llame charmander", () => {
+  Pokemon.create({ name: "charmander" });
+});
+
+it("deberia arrojar un error si el hp es nulo  ", (done) => {
+  Pokemon.create({})
+    .then(() => done(new Error("se requiere hp")))
+    .catch(() => done());
+});
+
+
+it("deberia arrojar un error si el ataque es nulo", (done) => {
+  Pokemon.create({})
+    .then(() => done(new Error('se requiere ataque')))
+    .catch(() => done());
+});
+
+

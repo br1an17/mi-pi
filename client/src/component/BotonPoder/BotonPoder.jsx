@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 
 import { ordenPorAtaque } from "../../redux/actions/actions";
-
+import Style from "./BotonPoder.module.css";
 
 export const BotonPoder = ({setMaxMin,Maxmin} ) =>{
 
@@ -23,7 +23,7 @@ const MaxMin = (e)=>{
     }
     return(
 
-<select onChange={MaxMin}>
+<select className={Style.poder} onChange={MaxMin}>
         <option> Filtro poder </option>
         <option value="Max - Min">Max - Min</option>
         <option value="Min - Max">Min - Max</option>

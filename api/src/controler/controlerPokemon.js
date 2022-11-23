@@ -5,7 +5,6 @@ const pokemonDB = async () => {
   try {
     // Desestructuramos la data
     const {data} = await axios
-    // get.(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=40`)
       .get("https://pokeapi.co/api/v2/pokemon?limit=40")
     // Desestructuramos los results
     const { results } = data;
@@ -25,6 +24,7 @@ const pokemonDB = async () => {
         image: data.sprites.other.home["front_default"],
         types: toString(data.types.map((t) => t.type.name)),
        })
+       console.log(data)
     }));
   
 

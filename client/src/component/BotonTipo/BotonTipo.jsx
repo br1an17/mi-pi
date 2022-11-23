@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { filtroPorTipo, ordenPorTipo } from "../../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
-
+import Style from "./BotonTipo.module.css";
 
 const BotonTipo = ({}) =>{
 const dispatch = useDispatch();
@@ -23,7 +23,8 @@ const todosLosTipos = useSelector((state) => state.type);
   
 }
 return (
-<select onChange={handleFiltro}>
+<select
+className={Style.tipo} onChange={handleFiltro}>
   <option value="tipos"> Todos los tipos </option>
   {todosLosTipos.map((e) => (
       <option value={e.name} key={e.name}>

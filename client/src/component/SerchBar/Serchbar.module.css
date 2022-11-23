@@ -1,0 +1,47 @@
+.boton{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background: rgb(21, 20, 20); 
+    color: #efeff5; 
+    padding: 5px ;
+    border-radius: 20px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    margin-bottom:10px ;
+    margin-top: 10px;
+    font-size: 15px;
+    width: 5%;
+    filter: drop-shadow(0px 3px 4px rgb(242, 8, 8));
+    margin-inline: 20px;
+  }
+  .boton:hover {
+    color: rgb(239, 10, 10);/* color de fuente hover */
+  }
+  .boton::after {
+    content: "";
+    background: #f7f2f2; /* color de fondo hover */
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.3s ease;
+  }
+  .boton:hover::after {
+    transition: all 0.3s ease-out;
+    transform: skewX(-45deg) scale(1, 1);
+  } 
+  .serch{
+    font-weight: 13px;
+    font-family:Georgia, Times, 'Times New Roman', serif;
+border-radius: 20px;
+padding: 6px;
+margin-left: 50px;
+background-color: rgb(234, 213, 218);
+filter: drop-shadow(0px 3px 4px rgb(242, 8, 8));
+  } 

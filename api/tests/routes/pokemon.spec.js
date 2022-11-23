@@ -3,7 +3,7 @@ const { expect } = require('chai');
 const session = require('supertest-session');
 const app = require('../../src/app.js');
 const { Pokemon, conn } = require('../../src/db.js');
-// const  {tiposDB} = require ("../../src/controler/controlerTypo")
+
 const agent = session(app);
 const pokemon = {
   name: 'Pikachu',
@@ -19,7 +19,13 @@ describe('Pokemon routes', () => {
     .then(() => Pokemon.create(pokemon)));
   describe('GET /pokemons', () => {
     it('should get 200', () =>
-      agent.get('/pokemons').expect(200)
+      agent.get('/pokemon').expect(200)
     );
+    it('Responds with the pokemon from api and DB', () => 
+    agent.get('/pokemon').then(res => 
+      expect(res.body.length).greaterThan(0)))
+
   });
 });
+
+
