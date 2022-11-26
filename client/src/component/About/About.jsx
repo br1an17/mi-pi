@@ -14,7 +14,7 @@ const About = () => {
         como 
         React,Redux,SQLice,Axios,Posgrest,
         Js,CSS,
-        Html,Expres y Node.
+        Html,Expres y Node...
        </h3>
 
     </div>
