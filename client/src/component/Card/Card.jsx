@@ -67,7 +67,7 @@ export default function Card() {
           </div>
         </div>
       ) : (
-        <h1>cargando</h1>
+        <h1>cargando...</h1>
       )}
     </div>
   );
