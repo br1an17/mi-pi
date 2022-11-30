@@ -12,6 +12,7 @@ import {
   BORRAR_DETALLE,
  FILTRO_POR_CREACION,
  BORRAR_POKEMON,
+//  ORDEN_DEFENZA,
 } from "../actions/actions";
 
 const initialState = {
@@ -110,6 +111,43 @@ export default function rootReducer(state = initialState, action) {
         currentPage: 1,
         error: false,
       };
+
+
+      // case ORDEN_DEFENZA :
+      //   const defenza =state.pokemonFiltrados.length
+      //      ? state.pokemonFiltrados
+      //    : state.pokemon;
+      //  const filtrodefenza =
+      //    action.payload === "Min - Max"
+      //      ? defenza.sort((a, b) => {
+      //          if (a.defenza > b.defenza) {
+      //            return 1;
+      //          }
+      //          if (b.defenza > a.defenza) {
+      //            return -1;
+      //          }
+      //          return 0;
+      //        })
+      //      : defenza.sort((a, b) => {
+      //          if (a.defenza > b.defenza) {
+      //            return -1;
+      //          }
+      //          if (b.defenza > a.defenza) {
+      //            return 1;
+      //          }
+      //          return 0;
+      //        });
+      //  return {
+      //    ...state,
+      //    pokemon: filtrodefenza,
+      //    pokemonFiltrados: filtrodefenza,
+      //    currentPage: 1,
+      //    error: false,
+      //  };
+ 
+
+
+
     case ORDEN_TIPO:
       return {
         ...state,

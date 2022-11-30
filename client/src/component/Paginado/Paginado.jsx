@@ -46,20 +46,26 @@ const handlePrev = () =>{
 }
 
   return (
-    <div >
+
+    <div className="container">
+    <div>
             <button  onClick={handlePrev}>
             <img src={flechaD} height="20px" width="20px" alt="atras"/>
             </button>  
-      <div >
+      </div>        
+      <div className="botones" > 
         {nPages.map((number) => (
           <div  key={number}>
             <button  onClick={() => handleClick(number)}>{number}</button>
           </div>
         ))}
       </div>
+      <div>
+
             <button  onClick={handleNext}>
              <img src={flechaI} height="20px" width="20px"  alt="flecha =>" />
             </button>  
+      </div>
     </div>
   );
 }

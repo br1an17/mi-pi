@@ -13,7 +13,7 @@ export const BUSCAR_DETALLE = "BUSCAR_DETALLE";
 export const FILTRO_POR_CREACION = "FILTRO_POR_CREACION";
 export const BORRAR_DETALLE = "BORRAR_DETALLE";
 export const BORRAR_POKEMON = "BORRAR_POKEMON";
-
+// export const ORDEN_DEFENZA =   "ORDEN_DEFENZA";
 
 export const getPokemones = () => {
   return async function (dispatch) {
@@ -155,3 +155,15 @@ export const borrarPokemon = (id) => {
     }
   };
 };
+
+// export const ordenPorSefenza= () =>{
+// return{
+
+// type:ORDEN_DEFENZA,
+// payload
+
+// }
+
+
+
+// }

@@ -30,12 +30,12 @@ const Pokemones = () => {
       {prueva.length > 0 ? (
         prueva.map(
           (
-            { image, name, types, id } // aca iva pokepaginado x prueva
+            { image, name, types, id, } // aca iva pokepaginado x prueva
           ) => (
             <div key={name} className={Style.contain}>
               <img src={image} alt="pokemon" className={Style.img} />
               <h2 className={Style.texto}>{name}</h2>
-              {id > 40 ? (
+              {id > 40 ? (                
                 <h3 className={Style.texto}>Tipo: {types[0].name}</h3>
               ) : (
                 <h3 className={Style.texto}>Tipo: {types.toString()}</h3>

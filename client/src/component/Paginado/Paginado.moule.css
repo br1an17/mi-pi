@@ -16,4 +16,15 @@ img {
        margin-left: 10px;
        position: relative;
          }
+.container{
+display: flex;
+justify-content: center;
+gap: 10px;
+
+}
+.botones{
+ gap: 10px;
+  display: flex;
+  flex-direction: row;
+}
      
