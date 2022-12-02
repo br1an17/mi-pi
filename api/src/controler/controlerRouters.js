@@ -5,7 +5,7 @@ const pokemons = require("./dataBase"); // mi base de datos
 
 
 const FunctionGet = async (name) => {
-   const pokemonTotal = await pokemons; // base de datos propia
+   const pokemonTotal = pokemons; // base de datos propia
   // let pokemonTotal = await pokemonDB();
   const pokemonDataB = await Pokemon.findAll({
     include: {
@@ -46,7 +46,7 @@ const FunctionGet = async (name) => {
 
 const FunctionGetId = async (id) => {
   
-   const getId = await pokemons// base de datos propia 
+   const getId =  pokemons// base de datos propia 
    //const getId = await pokemonDB();
   const pokemonId = getId.filter((pokemon) => pokemon.id === parseInt(id));
   
@@ -66,8 +66,8 @@ const FunctionGetId = async (id) => {
 
 const FunctionPost = async (body) => {
   const { types } = body;
-  const pokemonId = await pokemons; // esta es mi base dde datos
-   //const pokemonId = await pokemonDB();
+  const pokemonId = pokemons; // esta es mi base dde datos
+  // const pokemonId = await pokemonDB();
 
   const idPokemon = await Pokemon.findAll();
   const allID = pokemonId.concat(idPokemon);
